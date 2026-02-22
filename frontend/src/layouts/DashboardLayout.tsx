@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import { Layout, Menu, Input, Badge, Avatar } from 'antd';
+import { Menu, Input, Badge, Avatar } from 'antd';
 import {
     Briefcase,
     CheckSquare,
@@ -13,8 +13,6 @@ import {
     Search,
     LayoutDashboard
 } from 'lucide-react';
-
-const { Header, Sider, Content } = Layout;
 
 const DashboardLayout: React.FC = () => {
     const location = useLocation();
@@ -54,21 +52,21 @@ const DashboardLayout: React.FC = () => {
     ];
 
     return (
-        <Layout className="min-h-screen bg-[#f8fbff]">
-            {/* Sidebar */}
-            <Sider
-                width={240}
-                theme="light"
-                className="border-r border-gray-100 fixed h-screen left-0 top-0 z-10 shadow-sm transition-all duration-300"
-            >
-                <div className="h-16 flex items-center px-6 gap-3 pt-2">
+        <div className="flex h-screen w-screen overflow-hidden bg-[#f8fbff]">
+
+            {/* Sidebar 侧边栏 */}
+            <div className="w-[240px] flex-shrink-0 bg-white border-r border-gray-100 flex flex-col z-20 shadow-sm relative transition-all duration-300">
+
+                {/* 系统 Logo */}
+                <div className="h-16 flex-shrink-0 flex items-center px-6 gap-3 pt-2">
                     <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-md shadow-blue-200">
                         N
                     </div>
                     <span className="text-xl font-bold text-gray-800 tracking-tight">NexFlow OA</span>
                 </div>
 
-                <div className="px-4 py-2 mt-2 h-[calc(100vh-[240px])] overflow-y-auto custom-scrollbar">
+                {/* 菜单列表区域 */}
+                <div className="flex-1 overflow-y-auto px-4 py-2 mt-2 custom-scrollbar pb-32">
                     <Menu
                         mode="inline"
                         selectedKeys={[location.pathname]}
@@ -78,8 +76,8 @@ const DashboardLayout: React.FC = () => {
                     />
                 </div>
 
-                {/* Bottom Date Widget */}
-                <div className="absolute bottom-6 left-4 right-4 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-4 text-white shadow-lg shadow-blue-200">
+                {/* 底部日期悬浮挂件 */}
+                <div className="absolute bottom-6 left-4 right-4 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-4 text-white shadow-lg shadow-blue-200 pointer-events-none">
                     <div className="text-blue-100 text-sm mb-1">当前日期</div>
                     <div className="text-2xl font-bold mb-1">2026.02.22</div>
                     <div className="bg-blue-400/40 w-max px-2 py-0.5 rounded text-xs">星期日</div>
@@ -87,12 +85,14 @@ const DashboardLayout: React.FC = () => {
                         <Calendar size={48} />
                     </div>
                 </div>
-            </Sider>
+            </div>
 
-            {/* Main Container */}
-            <Layout className="ml-[240px] bg-transparent">
-                {/* Top Header */}
-                <Header className="bg-white/80 backdrop-blur-md h-16 px-8 flex items-center justify-between sticky top-0 z-10 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)]">
+            {/* Main Container 主右侧容器 */}
+            <div className="flex-1 flex flex-col min-w-0 relative">
+
+                {/* Top Header 顶部栏 */}
+                <header className="flex-shrink-0 bg-white/90 backdrop-blur-md h-16 px-8 flex items-center justify-between border-b border-gray-100/50 sticky top-0 z-10 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)]">
+
                     <div className="w-1/3 max-w-md">
                         <Input
                             prefix={<Search className="text-gray-400 mr-2" size={18} />}
@@ -117,14 +117,17 @@ const DashboardLayout: React.FC = () => {
                             <Avatar src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix&backgroundColor=b6e3f4" size={38} className="border border-gray-200 shadow-sm" />
                         </div>
                     </div>
-                </Header>
 
-                {/* Content Area */}
-                <Content className="p-6 h-[calc(100vh-64px)] overflow-auto">
+                </header>
+
+                {/* Content Area 核心内容页 */}
+                <main className="flex-1 overflow-auto p-6 scroll-smooth bg-transparent">
                     <Outlet />
-                </Content>
-            </Layout>
-        </Layout>
+                </main>
+
+            </div>
+
+        </div>
     );
 };
 
