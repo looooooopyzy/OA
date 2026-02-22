@@ -1,0 +1,20 @@
+src/App.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/layouts/DashboardLayout.tsx(9,5): error TS6133: 'LogOut' is declared but its value is never read.
+src/layouts/DashboardLayout.tsx(17,1): error TS6133: 'classNames' is declared but its value is never read.
+src/layouts/DashboardLayout.tsx(20,7): error TS6133: 'Text' is declared but its value is never read.
+src/layouts/DashboardLayout.tsx(78,25): error TS2322: Type '({ key: string; label: string; type: string; children: ({ key: string; icon: Element; label: string; } | { key: string; icon: Element; label: Element; })[]; icon?: undefined; } | { ...; })[]' is not assignable to type 'ItemType<MenuItemType>[]'.
+  Type '{ key: string; label: string; type: string; children: ({ key: string; icon: Element; label: string; } | { key: string; icon: Element; label: Element; })[]; icon?: undefined; } | { ...; }' is not assignable to type 'ItemType<MenuItemType>'.
+    Type '{ key: string; label: string; type: string; children: ({ key: string; icon: JSX.Element; label: string; } | { key: string; icon: JSX.Element; label: JSX.Element; })[]; icon?: undefined; }' is not assignable to type 'ItemType<MenuItemType>'.
+      Type '{ key: string; label: string; type: string; children: ({ key: string; icon: JSX.Element; label: string; } | { key: string; icon: JSX.Element; label: JSX.Element; })[]; icon?: undefined; }' is not assignable to type 'MenuItemType | MenuDividerType | SubMenuType<MenuItemType> | MenuItemGroupType<MenuItemType>'.
+        Type '{ key: string; label: string; type: string; children: ({ key: string; icon: JSX.Element; label: string; } | { key: string; icon: JSX.Element; label: JSX.Element; })[]; icon?: undefined; }' is not assignable to type 'SubMenuType<MenuItemType>'.
+          Types of property 'type' are incompatible.
+            Type 'string' is not assignable to type '"submenu"'.
+src/pages/Workbench/index.tsx(4,5): error TS6133: 'CheckCircleOutlined' is declared but its value is never read.
+src/pages/Workbench/index.tsx(5,5): error TS6133: 'ClockCircleOutlined' is declared but its value is never read.
+src/pages/Workbench/index.tsx(6,5): error TS6133: 'CloseCircleOutlined' is declared but its value is never read.
+src/pages/Workbench/index.tsx(9,5): error TS2614: Module '"@ant-design/icons"' has no exported member 'List'. Did you mean to use 'import List from "@ant-design/icons"' instead?
+src/pages/Workbench/index.tsx(10,5): error TS2614: Module '"@ant-design/icons"' has no exported member 'Users'. Did you mean to use 'import Users from "@ant-design/icons"' instead?
+src/pages/Workbench/index.tsx(11,5): error TS2614: Module '"@ant-design/icons"' has no exported member 'Wallet'. Did you mean to use 'import Wallet from "@ant-design/icons"' instead?
+src/pages/Workbench/index.tsx(12,5): error TS2614: Module '"@ant-design/icons"' has no exported member 'Trophy'. Did you mean to use 'import Trophy from "@ant-design/icons"' instead?
+src/pages/Workbench/index.tsx(14,20): error TS6133: 'Inbox' is declared but its value is never read.
+src/pages/Workbench/index.tsx(17,7): error TS6198: All destructured elements are unused.

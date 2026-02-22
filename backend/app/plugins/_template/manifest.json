@@ -1,0 +1,20 @@
+{
+    "name": "_template",
+    "version": "1.0.0",
+    "displayName": "插件模板",
+    "description": "复制此目录并修改为你的插件。将目录名和 name 改为你的插件标识。",
+    "icon": "AppstoreOutlined",
+    "author": "developer",
+    "dependencies": [],
+    "menus": [
+        {
+            "name": "模板页面",
+            "path": "/_template/list",
+            "icon": "UnorderedListOutlined"
+        }
+    ],
+    "permissions": [
+        "_template:read",
+        "_template:write"
+    ]
+}

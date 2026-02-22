@@ -1,0 +1,119 @@
+2026-02-22 16:37:21,154 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+INFO:sqlalchemy.engine.Engine:select pg_catalog.version()
+2026-02-22 16:37:21,154 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-02-22 16:37:21,156 INFO sqlalchemy.engine.Engine select current_schema()
+INFO:sqlalchemy.engine.Engine:select current_schema()
+2026-02-22 16:37:21,156 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-02-22 16:37:21,157 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+INFO:sqlalchemy.engine.Engine:show standard_conforming_strings
+2026-02-22 16:37:21,158 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2026-02-22 16:37:21,159 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2026-02-22 16:37:21,168 INFO sqlalchemy.engine.Engine SELECT users.username, users.email, users.phone, users.hashed_password, users.real_name, users.avatar, users.is_active, users.department_id, users.id, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = $1::VARCHAR
+INFO:sqlalchemy.engine.Engine:SELECT users.username, users.email, users.phone, users.hashed_password, users.real_name, users.avatar, users.is_active, users.department_id, users.id, users.created_at, users.updated_at 
+FROM users 
+WHERE users.username = $1::VARCHAR
+2026-02-22 16:37:21,168 INFO sqlalchemy.engine.Engine [generated in 0.00014s] ('admin',)
+INFO:sqlalchemy.engine.Engine:[generated in 0.00014s] ('admin',)
+INFO:app.main:首次启动，创建默认数据...
+2026-02-22 16:37:21,173 INFO sqlalchemy.engine.Engine INSERT INTO permissions (name, code, resource, action, created_at, updated_at) SELECT p0::VARCHAR, p1::VARCHAR, p2::VARCHAR, p3::VARCHAR, p4::TIMESTAMP WITH TIME ZONE, p5::TIMESTAMP WITH TIME ZONE FROM (VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR,  ... 1323 characters truncated ...  p2, p3, p4, p5, sen_counter) ORDER BY sen_counter RETURNING permissions.id, permissions.id AS id__1
+INFO:sqlalchemy.engine.Engine:INSERT INTO permissions (name, code, resource, action, created_at, updated_at) SELECT p0::VARCHAR, p1::VARCHAR, p2::VARCHAR, p3::VARCHAR, p4::TIMESTAMP WITH TIME ZONE, p5::TIMESTAMP WITH TIME ZONE FROM (VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR,  ... 1323 characters truncated ...  p2, p3, p4, p5, sen_counter) ORDER BY sen_counter RETURNING permissions.id, permissions.id AS id__1
+2026-02-22 16:37:21,173 INFO sqlalchemy.engine.Engine [generated in 0.00011s (insertmanyvalues) 1/1 (ordered)] ('用户查看', 'user:read', 'user', 'read', datetime.datetime(2026, 2, 22, 8, 37, 21, 173524, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 173526, tzinfo=datetime.timezone.utc), '用户创建', 'user:create', 'user', 'create', datetime.datetime(2026, 2, 22, 8, 37, 21, 173528, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 173528, tzinfo=datetime.timezone.utc), '用户编辑', 'user:update', 'user', 'update', datetime.datetime(2026, 2, 22, 8, 37, 21, 173529, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 173529, tzinfo=datetime.timezone.utc), '用户删除', 'user:delete', 'user', 'delete', datetime.datetime(2026, 2, 22, 8, 37, 21, 173529, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 173529, tzinfo=datetime.timezone.utc), '角色查看', 'role:read', 'role', 'read', datetime.datetime(2026, 2, 22, 8, 37, 21, 173530, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 173530, tzinfo=datetime.timezone.utc), '角色管理', 'role:manage', 'role', 'manage', datetime.datetime(2026, 2, 22, 8, 37, 21, 173531, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 173531, tzinfo=datetime.timezone.utc), '部门查看', 'dept:read', 'department', 'read', datetime.datetime(2026, 2, 22, 8, 37, 21, 173531, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 173531, tzinfo=datetime.timezone.utc), '部门管理', 'dept:manage', 'department', 'manage', datetime.datetime(2026, 2, 22, 8, 37, 21, 173532, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 173532, tzinfo=datetime.timezone.utc), '菜单查看', 'menu:read', 'menu', 'read', datetime.datetime(2026, 2, 22, 8, 37, 21, 173532, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 173532, tzinfo=datetime.timezone.utc), '菜单管理', 'menu:manage', 'menu', 'manage', datetime.datetime(2026, 2, 22, 8, 37, 21, 173533, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 173533, tzinfo=datetime.timezone.utc), '插件管理', 'plugin:manage', 'plugin', 'manage', datetime.datetime(2026, 2, 22, 8, 37, 21, 173533, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 173533, tzinfo=datetime.timezone.utc))
+INFO:sqlalchemy.engine.Engine:[generated in 0.00011s (insertmanyvalues) 1/1 (ordered)] ('用户查看', 'user:read', 'user', 'read', datetime.datetime(2026, 2, 22, 8, 37, 21, 173524, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 173526, tzinfo=datetime.timezone.utc), '用户创建', 'user:create', 'user', 'create', datetime.datetime(2026, 2, 22, 8, 37, 21, 173528, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 173528, tzinfo=datetime.timezone.utc), '用户编辑', 'user:update', 'user', 'update', datetime.datetime(2026, 2, 22, 8, 37, 21, 173529, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 173529, tzinfo=datetime.timezone.utc), '用户删除', 'user:delete', 'user', 'delete', datetime.datetime(2026, 2, 22, 8, 37, 21, 173529, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 173529, tzinfo=datetime.timezone.utc), '角色查看', 'role:read', 'role', 'read', datetime.datetime(2026, 2, 22, 8, 37, 21, 173530, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 173530, tzinfo=datetime.timezone.utc), '角色管理', 'role:manage', 'role', 'manage', datetime.datetime(2026, 2, 22, 8, 37, 21, 173531, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 173531, tzinfo=datetime.timezone.utc), '部门查看', 'dept:read', 'department', 'read', datetime.datetime(2026, 2, 22, 8, 37, 21, 173531, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 173531, tzinfo=datetime.timezone.utc), '部门管理', 'dept:manage', 'department', 'manage', datetime.datetime(2026, 2, 22, 8, 37, 21, 173532, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 173532, tzinfo=datetime.timezone.utc), '菜单查看', 'menu:read', 'menu', 'read', datetime.datetime(2026, 2, 22, 8, 37, 21, 173532, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 173532, tzinfo=datetime.timezone.utc), '菜单管理', 'menu:manage', 'menu', 'manage', datetime.datetime(2026, 2, 22, 8, 37, 21, 173533, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 173533, tzinfo=datetime.timezone.utc), '插件管理', 'plugin:manage', 'plugin', 'manage', datetime.datetime(2026, 2, 22, 8, 37, 21, 173533, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 173533, tzinfo=datetime.timezone.utc))
+2026-02-22 16:37:21,176 INFO sqlalchemy.engine.Engine INSERT INTO menus (name, path, icon, parent_id, sort_order, is_visible, permission_code, plugin_id, menu_type, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::INTEGER, $5::INTEGER, $6::BOOLEAN, $7::VARCHAR, $8::VARCHAR, $9::VARCHAR, $10::TIMESTAMP WITH TIME ZONE, $11::TIMESTAMP WITH TIME ZONE) RETURNING menus.id
+INFO:sqlalchemy.engine.Engine:INSERT INTO menus (name, path, icon, parent_id, sort_order, is_visible, permission_code, plugin_id, menu_type, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::INTEGER, $5::INTEGER, $6::BOOLEAN, $7::VARCHAR, $8::VARCHAR, $9::VARCHAR, $10::TIMESTAMP WITH TIME ZONE, $11::TIMESTAMP WITH TIME ZONE) RETURNING menus.id
+2026-02-22 16:37:21,176 INFO sqlalchemy.engine.Engine [generated in 0.00012s] ('系统管理', None, 'SettingOutlined', None, 100, True, None, None, 'directory', datetime.datetime(2026, 2, 22, 8, 37, 21, 176745, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 176747, tzinfo=datetime.timezone.utc))
+INFO:sqlalchemy.engine.Engine:[generated in 0.00012s] ('系统管理', None, 'SettingOutlined', None, 100, True, None, None, 'directory', datetime.datetime(2026, 2, 22, 8, 37, 21, 176745, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 176747, tzinfo=datetime.timezone.utc))
+2026-02-22 16:37:21,179 INFO sqlalchemy.engine.Engine INSERT INTO menus (name, path, icon, parent_id, sort_order, is_visible, permission_code, plugin_id, menu_type, created_at, updated_at) SELECT p0::VARCHAR, p1::VARCHAR, p2::VARCHAR, p3::INTEGER, p4::INTEGER, p5::BOOLEAN, p6::VARCHAR, p7::VARCHAR, p8:: ... 1065 characters truncated ... p4, p5, p6, p7, p8, p9, p10, sen_counter) ORDER BY sen_counter RETURNING menus.id, menus.id AS id__1
+INFO:sqlalchemy.engine.Engine:INSERT INTO menus (name, path, icon, parent_id, sort_order, is_visible, permission_code, plugin_id, menu_type, created_at, updated_at) SELECT p0::VARCHAR, p1::VARCHAR, p2::VARCHAR, p3::INTEGER, p4::INTEGER, p5::BOOLEAN, p6::VARCHAR, p7::VARCHAR, p8:: ... 1065 characters truncated ... p4, p5, p6, p7, p8, p9, p10, sen_counter) ORDER BY sen_counter RETURNING menus.id, menus.id AS id__1
+2026-02-22 16:37:21,179 INFO sqlalchemy.engine.Engine [generated in 0.00007s (insertmanyvalues) 1/1 (ordered)] ('用户管理', '/system/users', 'UserOutlined', 27, 1, True, 'user:read', None, 'menu', datetime.datetime(2026, 2, 22, 8, 37, 21, 179108, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 179109, tzinfo=datetime.timezone.utc), '角色管理', '/system/roles', 'TeamOutlined', 27, 2, True, 'role:read', None, 'menu', datetime.datetime(2026, 2, 22, 8, 37, 21, 179110, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 179110, tzinfo=datetime.timezone.utc), '部门管理', '/system/departments', 'ApartmentOutlined', 27, 3, True, 'dept:read', None, 'menu', datetime.datetime(2026, 2, 22, 8, 37, 21, 179111, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 179111, tzinfo=datetime.timezone.utc), '菜单管理', '/system/menus', 'MenuOutlined', 27, 4, True, 'menu:read', None, 'menu', datetime.datetime(2026, 2, 22, 8, 37, 21, 179112, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 179112, tzinfo=datetime.timezone.utc), '插件管理', '/system/plugins', 'AppstoreOutlined', 27, 5, True, 'plugin:manage', None, 'menu', datetime.datetime(2026, 2, 22, 8, 37, 21, 179112, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 179113, tzinfo=datetime.timezone.utc))
+INFO:sqlalchemy.engine.Engine:[generated in 0.00007s (insertmanyvalues) 1/1 (ordered)] ('用户管理', '/system/users', 'UserOutlined', 27, 1, True, 'user:read', None, 'menu', datetime.datetime(2026, 2, 22, 8, 37, 21, 179108, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 179109, tzinfo=datetime.timezone.utc), '角色管理', '/system/roles', 'TeamOutlined', 27, 2, True, 'role:read', None, 'menu', datetime.datetime(2026, 2, 22, 8, 37, 21, 179110, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 179110, tzinfo=datetime.timezone.utc), '部门管理', '/system/departments', 'ApartmentOutlined', 27, 3, True, 'dept:read', None, 'menu', datetime.datetime(2026, 2, 22, 8, 37, 21, 179111, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 179111, tzinfo=datetime.timezone.utc), '菜单管理', '/system/menus', 'MenuOutlined', 27, 4, True, 'menu:read', None, 'menu', datetime.datetime(2026, 2, 22, 8, 37, 21, 179112, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 179112, tzinfo=datetime.timezone.utc), '插件管理', '/system/plugins', 'AppstoreOutlined', 27, 5, True, 'plugin:manage', None, 'menu', datetime.datetime(2026, 2, 22, 8, 37, 21, 179112, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 179113, tzinfo=datetime.timezone.utc))
+2026-02-22 16:37:21,181 INFO sqlalchemy.engine.Engine INSERT INTO menus (name, path, icon, parent_id, sort_order, is_visible, permission_code, plugin_id, menu_type, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::INTEGER, $5::INTEGER, $6::BOOLEAN, $7::VARCHAR, $8::VARCHAR, $9::VARCHAR, $10::TIMESTAMP WITH TIME ZONE, $11::TIMESTAMP WITH TIME ZONE) RETURNING menus.id
+INFO:sqlalchemy.engine.Engine:INSERT INTO menus (name, path, icon, parent_id, sort_order, is_visible, permission_code, plugin_id, menu_type, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::INTEGER, $5::INTEGER, $6::BOOLEAN, $7::VARCHAR, $8::VARCHAR, $9::VARCHAR, $10::TIMESTAMP WITH TIME ZONE, $11::TIMESTAMP WITH TIME ZONE) RETURNING menus.id
+2026-02-22 16:37:21,181 INFO sqlalchemy.engine.Engine [cached since 0.004462s ago] ('工作台', '/dashboard', 'DashboardOutlined', None, 0, True, None, None, 'menu', datetime.datetime(2026, 2, 22, 8, 37, 21, 181094, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 181096, tzinfo=datetime.timezone.utc))
+INFO:sqlalchemy.engine.Engine:[cached since 0.004462s ago] ('工作台', '/dashboard', 'DashboardOutlined', None, 0, True, None, None, 'menu', datetime.datetime(2026, 2, 22, 8, 37, 21, 181094, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 181096, tzinfo=datetime.timezone.utc))
+2026-02-22 16:37:21,183 INFO sqlalchemy.engine.Engine INSERT INTO roles (name, code, description, data_scope, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::TIMESTAMP WITH TIME ZONE, $6::TIMESTAMP WITH TIME ZONE) RETURNING roles.id
+INFO:sqlalchemy.engine.Engine:INSERT INTO roles (name, code, description, data_scope, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::TIMESTAMP WITH TIME ZONE, $6::TIMESTAMP WITH TIME ZONE) RETURNING roles.id
+2026-02-22 16:37:21,183 INFO sqlalchemy.engine.Engine [generated in 0.00010s] ('超级管理员', 'admin', '拥有系统全部权限', 'all', datetime.datetime(2026, 2, 22, 8, 37, 21, 183000, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 183001, tzinfo=datetime.timezone.utc))
+INFO:sqlalchemy.engine.Engine:[generated in 0.00010s] ('超级管理员', 'admin', '拥有系统全部权限', 'all', datetime.datetime(2026, 2, 22, 8, 37, 21, 183000, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 2, 22, 8, 37, 21, 183001, tzinfo=datetime.timezone.utc))
+2026-02-22 16:37:21,184 INFO sqlalchemy.engine.Engine INSERT INTO role_menus (role_id, menu_id) VALUES ($1::INTEGER, $2::INTEGER)
+INFO:sqlalchemy.engine.Engine:INSERT INTO role_menus (role_id, menu_id) VALUES ($1::INTEGER, $2::INTEGER)
+2026-02-22 16:37:21,184 INFO sqlalchemy.engine.Engine [generated in 0.00009s] [(5, 31), (5, 30), (5, 29), (5, 32), (5, 28), (5, 27), (5, 33)]
+INFO:sqlalchemy.engine.Engine:[generated in 0.00009s] [(5, 31), (5, 30), (5, 29), (5, 32), (5, 28), (5, 27), (5, 33)]
+2026-02-22 16:37:21,186 INFO sqlalchemy.engine.Engine INSERT INTO role_permissions (role_id, permission_id) VALUES ($1::INTEGER, $2::INTEGER)
+INFO:sqlalchemy.engine.Engine:INSERT INTO role_permissions (role_id, permission_id) VALUES ($1::INTEGER, $2::INTEGER)
+2026-02-22 16:37:21,186 INFO sqlalchemy.engine.Engine [generated in 0.00009s] [(5, 56), (5, 63), (5, 58), (5, 64), (5, 59), (5, 65), (5, 60), (5, 66)  ... displaying 10 of 11 total bound parameter sets ...  (5, 57), (5, 62)]
+INFO:sqlalchemy.engine.Engine:[generated in 0.00009s] [(5, 56), (5, 63), (5, 58), (5, 64), (5, 59), (5, 65), (5, 60), (5, 66)  ... displaying 10 of 11 total bound parameter sets ...  (5, 57), (5, 62)]
+WARNING:passlib.handlers.bcrypt:(trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\sky\Desktop\OA\backend\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-02-22 16:37:21,192 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import asyncio; from app.main import seed_default_data; asyncio.run(seed_default_data())
+                                                            ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\veighna_studio\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\veighna_studio\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\veighna_studio\Lib\asyncio\base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "c:\Users\sky\Desktop\OA\backend\app\main.py", line 108, in seed_default_data
+    hashed_password=hash_password(settings.admin_password),
+                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\sky\Desktop\OA\backend\app\core\security.py", line 24, in hash_password
+    return pwd_context.hash(password)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\sky\Desktop\OA\backend\venv\Lib\site-packages\passlib\context.py", line 2258, in hash
+    return record.hash(secret, **kwds)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\sky\Desktop\OA\backend\venv\Lib\site-packages\passlib\utils\handlers.py", line 779, in hash
+    self.checksum = self._calc_checksum(secret)
+                    ~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\sky\Desktop\OA\backend\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 591, in _calc_checksum
+    self._stub_requires_backend()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sky\Desktop\OA\backend\venv\Lib\site-packages\passlib\utils\handlers.py", line 2254, in _stub_requires_backend
+    cls.set_backend()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\sky\Desktop\OA\backend\venv\Lib\site-packages\passlib\utils\handlers.py", line 2156, in set_backend
+    return owner.set_backend(name, dryrun=dryrun)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sky\Desktop\OA\backend\venv\Lib\site-packages\passlib\utils\handlers.py", line 2163, in set_backend
+    return cls.set_backend(name, dryrun=dryrun)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sky\Desktop\OA\backend\venv\Lib\site-packages\passlib\utils\handlers.py", line 2188, in set_backend
+    cls._set_backend(name, dryrun)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\sky\Desktop\OA\backend\venv\Lib\site-packages\passlib\utils\handlers.py", line 2311, in _set_backend
+    super(SubclassBackendMixin, cls)._set_backend(name, dryrun)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\sky\Desktop\OA\backend\venv\Lib\site-packages\passlib\utils\handlers.py", line 2224, in _set_backend
+    ok = loader(**kwds)
+  File "C:\Users\sky\Desktop\OA\backend\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 626, in _load_backend_mixin
+    return mixin_cls._finalize_backend_mixin(name, dryrun)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\sky\Desktop\OA\backend\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 421, in _finalize_backend_mixin
+    if detect_wrap_bug(IDENT_2A):
+       ~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\sky\Desktop\OA\backend\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 380, in detect_wrap_bug
+    if verify(secret, bug_hash):
+       ~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sky\Desktop\OA\backend\venv\Lib\site-packages\passlib\utils\handlers.py", line 792, in verify
+    return consteq(self._calc_checksum(secret), chk)
+                   ~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\sky\Desktop\OA\backend\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 655, in _calc_checksum
+    hash = _bcrypt.hashpw(secret, config)
+ValueError: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
