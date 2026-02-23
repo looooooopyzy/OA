@@ -16,6 +16,8 @@ import {
     Network,
     Key
 } from 'lucide-react';
+import Taskbar from '@/components/Taskbar';
+import Launchpad from '@/components/Launchpad';
 
 const DashboardLayout: React.FC = () => {
     const location = useLocation();
@@ -137,11 +139,17 @@ const DashboardLayout: React.FC = () => {
                 </header>
 
                 {/* Content Area 核心内容页 */}
-                <main className="flex-1 overflow-auto p-6 scroll-smooth bg-transparent">
+                <main className="flex-1 overflow-auto p-6 scroll-smooth bg-transparent pb-24">
                     <Outlet />
                 </main>
 
             </div>
+
+            {/* Global Taskbar */}
+            <Taskbar />
+
+            {/* Application Drawer Overlay */}
+            <Launchpad />
 
         </div>
     );
