@@ -2,71 +2,28 @@ import React from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, Input, Badge, Avatar } from 'antd';
 import {
-    Briefcase,
-    CheckSquare,
-    FileText,
     Bell,
     Settings,
     Calendar,
-    PieChart,
-    Users,
-    Search,
-    LayoutDashboard,
-    ShieldAlert,
-    Network,
-    Key
+    Search
 } from 'lucide-react';
 import Taskbar from '@/components/Taskbar';
 import Launchpad from '@/components/Launchpad';
+import { useAuthStore } from '@/store/useAuthStore';
+import { buildMenuTree } from '@/utils/menuUtils';
 
 const DashboardLayout: React.FC = () => {
     const location = useLocation();
     const navigate = useNavigate();
+    const user = useAuthStore((s) => s.user);
 
-    const menuItems = [
-        {
-            key: 'grp1',
-            label: '常用模块',
-            type: 'group' as const,
-            children: [
-                { key: '/', icon: <LayoutDashboard size={18} />, label: '工作台' },
-                {
-                    key: '/todos',
-                    icon: <CheckSquare size={18} />,
-                    label: (
-                        <div className="flex justify-between items-center w-full pr-2">
-                            <span>待办事项</span>
-                            <span className="bg-red-100 text-red-600 text-xs px-2 py-0.5 rounded-full font-medium">12</span>
-                        </div>
-                    )
-                },
-            ]
-        },
-        { key: '/approvals', icon: <FileText size={18} />, label: '流程审批' },
-        { key: '/notices', icon: <Bell size={18} />, label: '公告通知' },
-        {
-            key: 'grp2',
-            label: '企业资产',
-            type: 'group' as const,
-            children: [
-                { key: '/docs', icon: <Briefcase size={18} />, label: '公文管理' },
-                { key: '/calendar', icon: <Calendar size={18} />, label: '日程会议' },
-                { key: '/stats', icon: <PieChart size={18} />, label: '数据统计' },
-                { key: '/hr', icon: <Users size={18} />, label: '人力资源' },
-            ]
-        },
-        {
-            key: 'grp3',
-            label: '系统管理',
-            type: 'group' as const,
-            children: [
-                { key: '/system/users', icon: <Settings size={18} />, label: '用户管理' },
-                { key: '/system/roles', icon: <ShieldAlert size={18} />, label: '角色与权限' },
-                { key: '/system/departments', icon: <Network size={18} />, label: '部门架构' },
-                { key: '/system/menus', icon: <Key size={18} />, label: '菜单权限管理' },
-            ]
-        }
-    ];
+    // 基于登录用户权限动态构建菜单项
+    const menuItems = React.useMemo(() => {
+        if (!user || !user.menus) return [];
+        return buildMenuTree(user.menus);
+    }, [user]);
+
+
 
     return (
         <div className="flex h-screen w-screen overflow-hidden bg-[#f8fbff]">

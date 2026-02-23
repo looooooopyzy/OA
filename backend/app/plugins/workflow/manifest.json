@@ -1,0 +1,49 @@
+{
+    "name": "workflow",
+    "version": "1.0.0",
+    "displayName": "审批流引擎",
+    "description": "基于微内核底座构建的可视化、高可定制审批工作流引擎",
+    "icon": "AppstoreOutlined",
+    "author": "System",
+    "dependencies": [],
+    "permissions": [
+        "workflow:manage",
+        "workflow:execute"
+    ],
+    "menus": [
+        {
+            "name": "流程管理",
+            "path": null,
+            "icon": "ApartmentOutlined",
+            "sort_order": 90,
+            "menu_type": "directory"
+        },
+        {
+            "name": "流程编排",
+            "path": "/plugins/workflow/design",
+            "icon": "EditOutlined",
+            "parent_id": null,
+            "sort_order": 1,
+            "menu_type": "menu",
+            "permission_code": "workflow:manage"
+        },
+        {
+            "name": "发起流程",
+            "path": "/plugins/workflow/start",
+            "icon": "PlayCircleOutlined",
+            "parent_id": null,
+            "sort_order": 2,
+            "menu_type": "menu",
+            "permission_code": "workflow:execute"
+        },
+        {
+            "name": "我的待办",
+            "path": "/plugins/workflow/todos",
+            "icon": "CheckSquareOutlined",
+            "parent_id": null,
+            "sort_order": 3,
+            "menu_type": "menu",
+            "permission_code": "workflow:execute"
+        }
+    ]
+}

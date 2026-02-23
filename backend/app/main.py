@@ -119,15 +119,16 @@ async def seed_default_data() -> None:
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """应用生命周期管理。"""
-    # 启动：建表 + 种子数据 + 加载插件
+    # 先发现并加载插件（这样模型才会被导入注册到 Base）
+    plugin_engine.discover()
+    plugin_engine.load_all(app)
+    logger.info("已加载 %d 个插件", len(plugin_engine.loaded_plugins))
+
+    # 启动：建表 + 种子数据
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
 
     await seed_default_data()
-
-    plugin_engine.discover()
-    plugin_engine.load_all(app)
-    logger.info("已加载 %d 个插件", len(plugin_engine.loaded_plugins))
 
     yield
 

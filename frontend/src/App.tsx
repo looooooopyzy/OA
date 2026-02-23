@@ -9,6 +9,7 @@ import UserManagement from '@/pages/System/Users';
 import RoleManagement from '@/pages/System/Roles';
 import DepartmentManagement from '@/pages/System/Departments';
 import MenuManagement from '@/pages/System/Menus';
+import { generatePluginRoutes } from '@/router/DynamicRouter';
 
 function App() {
   const fetchUser = useAuthStore((s) => s.fetchUser);
@@ -38,7 +39,9 @@ function App() {
           <Route path="system/roles" element={<RoleManagement />} />
           <Route path="system/departments" element={<DepartmentManagement />} />
           <Route path="system/menus" element={<MenuManagement />} />
-          {/* 后续路由将在此扩展 */}
+
+          {/* 插件系统动态挂载区域 */}
+          {generatePluginRoutes()}
         </Route>
       </Routes>
     </BrowserRouter>

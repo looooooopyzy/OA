@@ -15,6 +15,10 @@ from sqlalchemy.ext.asyncio import async_engine_from_config
 # 导入所有模型以确保 Alembic 能发现表结构
 from app.models import Base  # noqa: F401
 from app.core.config import get_settings
+from app.core.plugin_engine import plugin_engine
+
+# 执行发现以导入插件的 models.py
+plugin_engine.discover()
 
 config = context.config
 settings = get_settings()

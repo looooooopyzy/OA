@@ -1,0 +1,27 @@
+{
+    "name": "announcement",
+    "version": "1.0.0",
+    "displayName": "公告管理",
+    "description": "企业内部新闻、通知与公告发布",
+    "icon": "NotificationOutlined",
+    "author": "system",
+    "dependencies": [],
+    "menus": [
+        {
+            "name": "公告大厅",
+            "path": "/plugins/announcement/list",
+            "icon": "NotificationOutlined",
+            "permission_code": "announcement:read"
+        },
+        {
+            "name": "发布公告",
+            "path": "/plugins/announcement/publish",
+            "icon": "EditOutlined",
+            "permission_code": "announcement:write"
+        }
+    ],
+    "permissions": [
+        "announcement:read",
+        "announcement:write"
+    ]
+}

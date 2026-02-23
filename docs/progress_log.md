@@ -11,6 +11,29 @@
 
 ## 进度日志
 
+### 2026-02-23 — Phase 1 核心底座开发完成
+
+**已完成 ✅**
+1. 搭建开发环境（Docker / Python / Node.js）
+2. 后端微内核底座（配置管理 / 数据库连接 / 认证鉴权 / 插件引擎 / 事件总线）
+3. 数据库模型 & 迁移（User / Role / Permission / Menu / Department / Plugin）
+4. 核心 API（认证 / 用户 / 角色 / 菜单 / 部门 / 插件管理）
+5. 前端项目初始化 & 设计系统 (React + Vite + AntD + Tailwind)
+6. OS 风格桌面布局（Sidebar / TopBar / Launchpad / ContentView）
+7. 登录页面 & Token 管理
+8. 工作台 Dashboard (带响应式 Grid)
+9. 系统管理页面（用户 / 角色 / 部门 / 菜单 CRUD）
+10. 全局底部悬浮任务栏 (Taskbar)与应用抽屉 (Launchpad)
+11. 前端微内核动态加载机制，实现依据权限挂载动态路由
+12. 完善后端的插件自动挂载机制(含模型嗅探)
+13. 开发第一个独立业务插件：公告管理 (Announcements) 完整前后端
+
+**下一步 🔜**
+1. 开始 Phase 2：后端审批流运行时（流程定义 / 实例 / 任务 / 条件求值）开发
+2. 设计审批流相关数据模型并创建迁移脚本
+
+---
+
 ### 2026-02-21 — 项目初始化 & 规划
 
 **已完成 ✅**
@@ -36,18 +59,18 @@
 ## Phase 分解概览
 
 ### Phase 1：底座搭建 ⬅ 当前阶段
-- [ ] 开发环境搭建（Docker / Python / Node.js）
-- [ ] 后端微内核底座（配置管理 / 数据库连接 / 认证鉴权 / 插件引擎 / 事件总线）
-- [ ] 数据库模型 & 迁移（User / Role / Permission / Menu / Department / Plugin）
-- [ ] 核心 API（认证 / 用户 / 角色 / 菜单 / 部门 / 插件管理）
-- [ ] 前端项目初始化 & 设计系统
-- [ ] OS 风格桌面布局（Sidebar / TopBar / Launchpad / ContentView）
-- [ ] 前端微内核（动态模块加载 / 路由注册）
-- [ ] 登录页面 & Token 管理
-- [ ] 工作台 Dashboard
-- [ ] 系统管理页面（用户 / 角色 / 部门 / 菜单）
-- [ ] 插件管理页面 & Launchpad
-- [ ] 示例插件（公告管理）完整前后端
+- [x] 开发环境搭建（Docker / Python / Node.js）
+- [x] 后端微内核底座（配置管理 / 数据库连接 / 认证鉴权 / 插件引擎 / 事件总线）
+- [x] 数据库模型 & 迁移（User / Role / Permission / Menu / Department / Plugin）
+- [x] 核心 API（认证 / 用户 / 角色 / 菜单 / 部门 / 插件管理）
+- [x] 前端项目初始化 & 设计系统
+- [x] OS 风格桌面布局（Sidebar / TopBar / Launchpad / ContentView）
+- [x] 前端微内核（动态模块加载 / 路由注册）
+- [x] 登录页面 & Token 管理
+- [x] 工作台 Dashboard
+- [x] 系统管理页面（用户 / 角色 / 部门 / 菜单）
+- [x] 插件管理页面 & Launchpad UI
+- [x] 示例插件（公告管理）完整前后端
 
 ### Phase 2：审批流引擎
 - [ ] 后端审批流运行时（流程定义 / 实例 / 任务 / 条件求值）

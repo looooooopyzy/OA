@@ -129,6 +129,15 @@ class PluginEngine:
             return
 
         try:
+            # 自动导入插件模型 (如果存在)，使得 SQLAlchemy 能发现并在 create_all 时生成表
+            try:
+                models_path = f"app.plugins.{manifest.name}.models"
+                importlib.import_module(models_path)
+                logger.info("已导入插件模型: %s", models_path)
+            except ImportError:
+                # 插件可能没有 models.py，这是正常的
+                pass
+
             module_path = f"app.plugins.{manifest.name}.router"
             module = importlib.import_module(module_path)
             router = getattr(module, "router", None)

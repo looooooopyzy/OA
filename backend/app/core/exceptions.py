@@ -47,6 +47,8 @@ def register_exception_handlers(app: FastAPI) -> None:
 
     @app.exception_handler(Exception)
     async def global_exception_handler(_: Request, exc: Exception):
+        import logging
+        logging.getLogger(__name__).error(f"Global Ex: {exc}", exc_info=True)
         return JSONResponse(
             status_code=500,
             content=error(code=500, message="服务器内部错误"),

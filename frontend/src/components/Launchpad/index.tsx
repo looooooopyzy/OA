@@ -1,41 +1,33 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-    LayoutDashboard,
-    CheckSquare,
-    FileText,
-    Calendar,
-    Settings,
-    PieChart,
-    Users,
-    MessageSquare,
-    Database,
-    Mail,
-    Folders,
-    MonitorPlay,
-    X
-} from 'lucide-react';
+import { X } from 'lucide-react';
 import { useAppStore } from '@/store/useAppStore';
+import { useAuthStore } from '@/store/useAuthStore';
+import { renderIcon } from '@/utils/menuUtils';
 
-// 模拟的系统应用和插件数据
-const applications = [
-    { id: 'workbench', path: '/', icon: <LayoutDashboard size={48} strokeWidth={1.5} />, label: '工作台', color: 'bg-blue-500' },
-    { id: 'todos', path: '/todos', icon: <CheckSquare size={48} strokeWidth={1.5} />, label: '待办事项', color: 'bg-orange-500' },
-    { id: 'approvals', path: '/approvals', icon: <FileText size={48} strokeWidth={1.5} />, label: '流程审批', color: 'bg-green-500' },
-    { id: 'docs', path: '/docs', icon: <Folders size={48} strokeWidth={1.5} />, label: '公文库', color: 'bg-indigo-500' },
-    { id: 'calendar', path: '/calendar', icon: <Calendar size={48} strokeWidth={1.5} />, label: '日程会议', color: 'bg-rose-500' },
-    { id: 'mail', path: '/mail', icon: <Mail size={48} strokeWidth={1.5} />, label: '内部邮件', color: 'bg-sky-500' },
-    { id: 'chat', path: '/chat', icon: <MessageSquare size={48} strokeWidth={1.5} />, label: '即时通讯', color: 'bg-emerald-500' },
-    { id: 'hr', path: '/hr', icon: <Users size={48} strokeWidth={1.5} />, label: '人力资源', color: 'bg-amber-500' },
-    { id: 'stats', path: '/stats', icon: <PieChart size={48} strokeWidth={1.5} />, label: '数据报表', color: 'bg-purple-500' },
-    { id: 'assets', path: '/assets', icon: <Database size={48} strokeWidth={1.5} />, label: '资产管理', color: 'bg-cyan-600' },
-    { id: 'monitor', path: '/monitor', icon: <MonitorPlay size={48} strokeWidth={1.5} />, label: '系统监控', color: 'bg-slate-700' },
-    { id: 'settings', path: '/system/users', icon: <Settings size={48} strokeWidth={1.5} />, label: '系统设置', color: 'bg-gray-600' },
+const colors = [
+    'bg-blue-500', 'bg-orange-500', 'bg-green-500', 'bg-indigo-500',
+    'bg-rose-500', 'bg-sky-500', 'bg-emerald-500', 'bg-amber-500',
+    'bg-purple-500', 'bg-cyan-600', 'bg-slate-700', 'bg-gray-600'
 ];
 
 const Launchpad: React.FC = () => {
     const { isLaunchpadOpen, setLaunchpadOpen } = useAppStore();
     const navigate = useNavigate();
+    const user = useAuthStore(s => s.user);
+
+    const applications = useMemo(() => {
+        if (!user || !user.menus) return [];
+        // 取所有有 path 且不是父目录的菜单作为快捷应用
+        const apps = user.menus.filter((m: Pick<any, string>) => m.path && m.menu_type !== 'directory');
+        return apps.map((app: Pick<any, string>, index: number) => ({
+            id: app.id,
+            path: app.path,
+            icon: renderIcon(app.icon, 36), // size 36 for better bounding
+            label: app.name,
+            color: colors[index % colors.length]
+        }));
+    }, [user]);
 
     // 监听 ESC 键关闭
     useEffect(() => {
