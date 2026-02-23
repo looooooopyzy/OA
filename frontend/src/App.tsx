@@ -5,6 +5,10 @@ import AuthGuard from '@/components/AuthGuard';
 import DashboardLayout from '@/layouts/DashboardLayout';
 import LoginPage from '@/pages/Login';
 import Workbench from '@/pages/Workbench';
+import UserManagement from '@/pages/System/Users';
+import RoleManagement from '@/pages/System/Roles';
+import DepartmentManagement from '@/pages/System/Departments';
+import MenuManagement from '@/pages/System/Menus';
 
 function App() {
   const fetchUser = useAuthStore((s) => s.fetchUser);
@@ -30,6 +34,10 @@ function App() {
           }
         >
           <Route index element={<Workbench />} />
+          <Route path="system/users" element={<UserManagement />} />
+          <Route path="system/roles" element={<RoleManagement />} />
+          <Route path="system/departments" element={<DepartmentManagement />} />
+          <Route path="system/menus" element={<MenuManagement />} />
           {/* 后续路由将在此扩展 */}
         </Route>
       </Routes>

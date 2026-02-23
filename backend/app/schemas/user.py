@@ -60,13 +60,14 @@ class UserInfo(BaseModel):
 class RoleBase(BaseModel):
     """角色基础字段。"""
     name: str
-    code: str
+    code: Optional[str] = None
     description: Optional[str] = None
     data_scope: str = "self"
 
 
 class RoleCreate(RoleBase):
     """创建角色请求。"""
+    department_ids: list[int] = []
     permission_ids: list[int] = []
     menu_ids: list[int] = []
 
@@ -76,6 +77,7 @@ class RoleUpdate(BaseModel):
     name: Optional[str] = None
     description: Optional[str] = None
     data_scope: Optional[str] = None
+    department_ids: Optional[list[int]] = None
     permission_ids: Optional[list[int]] = None
     menu_ids: Optional[list[int]] = None
 
@@ -87,6 +89,7 @@ class RoleOut(BaseModel):
     code: str
     description: Optional[str] = None
     data_scope: str
+    departments: list[dict] = []
     created_at: datetime
 
     model_config = {"from_attributes": True}

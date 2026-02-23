@@ -7,7 +7,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
 from app.core.exceptions import ConflictException, NotFoundException
-from app.models.user import Role, Permission, Menu
+import uuid
+from app.models.user import Role, Permission, Menu, Department
 from app.schemas.user import RoleCreate, RoleUpdate
 
 
@@ -19,7 +20,7 @@ class RoleService:
         db: AsyncSession, page: int = 1, page_size: int = 20, keyword: Optional[str] = None
     ) -> tuple[list[Role], int]:
         """分页查询角色列表。"""
-        query = select(Role)
+        query = select(Role).options(selectinload(Role.departments))
         if keyword:
             query = query.where(Role.name.ilike(f"%{keyword}%"))
 
@@ -38,6 +39,7 @@ class RoleService:
             .options(
                 selectinload(Role.permissions),
                 selectinload(Role.menus),
+                selectinload(Role.departments),
             )
             .where(Role.id == role_id)
         )
@@ -49,6 +51,9 @@ class RoleService:
     @staticmethod
     async def create(db: AsyncSession, data: RoleCreate) -> Role:
         """创建角色。"""
+        if not data.code:
+            data.code = f"role_{uuid.uuid4().hex[:8]}"
+
         existing = await db.execute(
             select(Role).where(Role.code == data.code)
         )
@@ -61,6 +66,12 @@ class RoleService:
             description=data.description,
             data_scope=data.data_scope,
         )
+
+        if data.department_ids:
+            depts = await db.execute(
+                select(Department).where(Department.id.in_(data.department_ids))
+            )
+            role.departments = list(depts.scalars().all())
 
         if data.permission_ids:
             perms = await db.execute(
@@ -99,6 +110,14 @@ class RoleService:
                     select(Menu).where(Menu.id.in_(menu_ids))
                 )
                 role.menus = list(menus.scalars().all())
+
+        if "department_ids" in update_data:
+            dept_ids = update_data.pop("department_ids")
+            if dept_ids is not None:
+                depts = await db.execute(
+                    select(Department).where(Department.id.in_(dept_ids))
+                )
+                role.departments = list(depts.scalars().all())
 
         for field, value in update_data.items():
             setattr(role, field, value)

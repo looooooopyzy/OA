@@ -30,6 +30,7 @@ async def list_roles(
             "code": r.code,
             "description": r.description,
             "data_scope": r.data_scope,
+            "departments": [{"id": d.id, "name": d.name} for d in r.departments],
             "created_at": r.created_at.isoformat() if r.created_at else None,
         }
         for r in roles
@@ -47,6 +48,7 @@ async def get_role(role_id: int, db: AsyncSession = Depends(get_db)):
         "code": role.code,
         "description": role.description,
         "data_scope": role.data_scope,
+        "department_ids": [d.id for d in role.departments],
         "permission_ids": [p.id for p in role.permissions],
         "menu_ids": [m.id for m in role.menus],
     })

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, Input, Badge, Avatar } from 'antd';
 import {
     Briefcase,
@@ -11,11 +11,15 @@ import {
     PieChart,
     Users,
     Search,
-    LayoutDashboard
+    LayoutDashboard,
+    ShieldAlert,
+    Network,
+    Key
 } from 'lucide-react';
 
 const DashboardLayout: React.FC = () => {
     const location = useLocation();
+    const navigate = useNavigate();
 
     const menuItems = [
         {
@@ -48,6 +52,17 @@ const DashboardLayout: React.FC = () => {
                 { key: '/stats', icon: <PieChart size={18} />, label: '数据统计' },
                 { key: '/hr', icon: <Users size={18} />, label: '人力资源' },
             ]
+        },
+        {
+            key: 'grp3',
+            label: '系统管理',
+            type: 'group' as const,
+            children: [
+                { key: '/system/users', icon: <Settings size={18} />, label: '用户管理' },
+                { key: '/system/roles', icon: <ShieldAlert size={18} />, label: '角色与权限' },
+                { key: '/system/departments', icon: <Network size={18} />, label: '部门架构' },
+                { key: '/system/menus', icon: <Key size={18} />, label: '菜单权限管理' },
+            ]
         }
     ];
 
@@ -70,6 +85,7 @@ const DashboardLayout: React.FC = () => {
                     <Menu
                         mode="inline"
                         selectedKeys={[location.pathname]}
+                        onClick={(info) => navigate(info.key)}
                         items={menuItems}
                         className="border-none bg-transparent"
                         style={{ fontSize: '15px' }}

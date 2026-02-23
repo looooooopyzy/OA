@@ -38,6 +38,13 @@ role_menus = Table(
     Column("menu_id", Integer, ForeignKey("menus.id", ondelete="CASCADE"), primary_key=True),
 )
 
+role_departments = Table(
+    "role_departments",
+    Base.metadata,
+    Column("role_id", Integer, ForeignKey("roles.id", ondelete="CASCADE"), primary_key=True),
+    Column("department_id", Integer, ForeignKey("departments.id", ondelete="CASCADE"), primary_key=True),
+)
+
 
 # ──────────────────────────── 部门 ────────────────────────────
 
@@ -64,6 +71,9 @@ class Department(Base, IdMixin, TimestampMixin):
     )
     users: Mapped[list["User"]] = relationship(
         "User", back_populates="department", foreign_keys="[User.department_id]"
+    )
+    roles: Mapped[list["Role"]] = relationship(
+        "Role", secondary=role_departments, back_populates="departments"
     )
 
 
@@ -109,6 +119,9 @@ class Role(Base, IdMixin, TimestampMixin):
     )
 
     # 关系
+    departments: Mapped[list["Department"]] = relationship(
+        "Department", secondary=role_departments, back_populates="roles"
+    )
     users: Mapped[list[User]] = relationship(
         "User", secondary=user_roles, back_populates="roles"
     )
